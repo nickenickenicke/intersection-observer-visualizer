@@ -17,13 +17,6 @@ html {
   writing-mode: horizontal-lr;
 }
 
-.viewchange {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 10;
-}
-
 .layout-grid {
   width: 100%;
   height: 100%;
@@ -132,15 +125,16 @@ html {
   left: 0;
 }
 
-.wrapper-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.scroll-down {
+  display: flex;
+  height: 90%;
+  align-items: center;
+  justify-content: center;
 }
 
 .scrolling-element {
   position: relative;
-  margin: 120vh auto;
+  margin: 70vh auto 120vh;
   width: 200px;
   height: 200px;
   background: var(--color-not-observed);
@@ -149,59 +143,4 @@ html {
 
 .scrolling-element-observed {
   background: var(--color-observed);
-}
-
-.padding100hv {
-  width: 100%;
-  height: 100vh;
-  border-bottom: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-article {
-  position: relative;
-}
-
-.observera {
-  background-color: aquamarine;
-  height: 10vh;
-  width: 50vw;
-  margin: 0 auto;
-  position: sticky;
-  top: 30vh;
-}
-
-.observerad {
-  background-color: blue;
-}
-
-.st {
-  position: sticky;
-  top: 0;
-}
-
-.ptop30 {
-  position: fixed;
-  width: 100%;
-  height: 30vh;
-  top: 0;
-  border-bottom: 1px solid red;
-
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-}
-
-.pbottom30 {
-  position: fixed;
-  width: 100%;
-  height: 30vh;
-  bottom: 0;
-  border-top: 1px solid red;
-
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
 }

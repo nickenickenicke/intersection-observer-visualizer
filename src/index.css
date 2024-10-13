@@ -1,0 +1,207 @@
+:root {
+  --wrapper-block: 700px;
+  --wrapper-inline: 400px;
+  --root-margin-block: 10;
+  --root-margin-inline: 10;
+  --color-not-observed: rgb(255, 138, 138);
+  --color-observed: rgb(157, 255, 138);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  writing-mode: horizontal-lr;
+}
+
+.viewchange {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.layout-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  grid-template-rows: 100vh;
+}
+
+.layout-grid-aside {
+  background-color: grey;
+  grid-column: 2 / 3;
+  grid-row: 1;
+}
+
+.layout-grid-main {
+  grid-column: 1 / 2;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  container: layout-grid-main / inline-size;
+  position: relative;
+}
+
+.wrapper-element {
+  position: relative;
+  overflow-y: scroll;
+  border: 1px solid black;
+  width: var(--wrapper-block);
+  height: var(--wrapper-inline);
+}
+
+.wrapper-element::after {
+  content: "Root";
+  position: absolute;
+  color: black;
+  top: -1.5rem;
+  left: 0;
+  z-index: 20;
+}
+
+.wrapper-titles {
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title-element-status {
+  background-color: var(--color-not-observed);
+}
+.title-element-status-observed {
+  background-color: var(--color-observed);
+}
+
+.root-margin-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns:
+    1fr calc(var(--wrapper-block) * (var(--root-margin-block) / 50 + 1))
+    1fr;
+  grid-template-rows:
+    1fr calc(var(--wrapper-inline) * (var(--root-margin-inline) / 50 + 1))
+    1fr;
+}
+
+.root-margin-overlay-top {
+  grid-column: 1/4;
+  grid-row: 1/2;
+}
+
+.root-margin-overlay-left {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.root-margin-overlay-right {
+  grid-column: 3/4;
+  grid-row: 2/3;
+}
+
+.root-margin-overlay-bottom {
+  grid-column: 1/4;
+  grid-row: 3/4;
+}
+
+.root-margin-overlay-inner {
+  position: relative;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  border: 2px dashed blue;
+}
+
+.root-margin-overlay-inner::after {
+  content: "Root Margin";
+  position: absolute;
+  color: blue;
+  top: -1.5rem;
+  left: 0;
+}
+
+.wrapper-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.scrolling-element {
+  position: relative;
+  margin: 120vh auto;
+  width: 200px;
+  height: 200px;
+  background: var(--color-not-observed);
+  z-index: 8;
+}
+
+.scrolling-element-observed {
+  background: var(--color-observed);
+}
+
+.padding100hv {
+  width: 100%;
+  height: 100vh;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+article {
+  position: relative;
+}
+
+.observera {
+  background-color: aquamarine;
+  height: 10vh;
+  width: 50vw;
+  margin: 0 auto;
+  position: sticky;
+  top: 30vh;
+}
+
+.observerad {
+  background-color: blue;
+}
+
+.st {
+  position: sticky;
+  top: 0;
+}
+
+.ptop30 {
+  position: fixed;
+  width: 100%;
+  height: 30vh;
+  top: 0;
+  border-bottom: 1px solid red;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.pbottom30 {
+  position: fixed;
+  width: 100%;
+  height: 30vh;
+  bottom: 0;
+  border-top: 1px solid red;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}

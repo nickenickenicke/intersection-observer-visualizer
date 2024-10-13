@@ -159,6 +159,7 @@ threshold: ${optionsState.threshold}
                 observerad
               </span>
             </div>
+            <h3 className="scroll-down">↓ Scrolla ner ↓</h3>
             <div
               ref={toBeObserved}
               className={

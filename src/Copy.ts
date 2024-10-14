@@ -11,7 +11,7 @@ type Copy = {
   scrollDown: Language;
 };
 
-export const copy = {
+export const copy: Copy = {
   controls: {
     swedish: "Inställningar",
     english: "Settings",

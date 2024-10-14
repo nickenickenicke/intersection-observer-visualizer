@@ -2,7 +2,7 @@
   --wrapper-block: 700px;
   --wrapper-inline: 400px;
   --root-margin-block: 10;
-  --root-margin-inline: 10;
+  --root-margin-inline: -10;
   --color-not-observed: rgb(255, 138, 138);
   --color-observed: rgb(157, 255, 138);
 }
@@ -134,7 +134,7 @@ html {
 
 .scrolling-element {
   position: relative;
-  margin: 70vh auto 120vh;
+  margin: calc(var(--wrapper-inline) / 2) auto calc(var(--wrapper-inline) * 2);
   width: 200px;
   height: 200px;
   background: var(--color-not-observed);

@@ -12,7 +12,7 @@ export const ElementObserver = () => {
   const [observed, setObserved] = useState(false);
   const [optionsState, setOptionsState] = useState<InterOptions>({
     rootX: 10,
-    rootY: 10,
+    rootY: -10,
     threshold: 1,
   });
 
@@ -139,7 +139,8 @@ threshold: ${optionsState.threshold}
                 "--root-margin-block": optionsState.rootX,
                 "--root-margin-inline": optionsState.rootY,
               } as CSSProperties
-            }>
+            }
+          >
             <div className="root-margin-overlay-top"></div>
             <div className="root-margin-overlay-left"></div>
             <div className="root-margin-overlay-inner"></div>
@@ -154,7 +155,8 @@ threshold: ${optionsState.threshold}
                   observed
                     ? "title-element-status title-element-status-observed"
                     : "title-element-status"
-                }>
+                }
+              >
                 {!observed && "inte "}
                 observerad
               </span>
@@ -166,7 +168,8 @@ threshold: ${optionsState.threshold}
                 observed
                   ? "scrolling-element scrolling-element-observed"
                   : "scrolling-element"
-              }>
+              }
+            >
               {!observed && "inte "}
               observerad
             </div>

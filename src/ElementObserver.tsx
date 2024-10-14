@@ -1,4 +1,5 @@
 import { CSSProperties, useEffect, useRef, useState } from "react";
+import { copy, Language } from "./Copy";
 
 interface InterOptions {
   rootX: number;
@@ -10,6 +11,7 @@ export const ElementObserver = () => {
   const boundingContainer = useRef<HTMLDivElement | null>(null);
   const toBeObserved = useRef<HTMLDivElement | null>(null);
   const [observed, setObserved] = useState(false);
+  const [language, setLanguage] = useState("swedish");
   const [optionsState, setOptionsState] = useState<InterOptions>({
     rootX: 10,
     rootY: -10,
@@ -24,6 +26,10 @@ export const ElementObserver = () => {
       });
     }
     setOptionsState({ ...optionsState, [key as keyof InterOptions]: value });
+  };
+
+  const toggleLanguage = () => {
+    setLanguage(language === "english" ? "swedish" : "english");
   };
 
   useEffect(() => {
@@ -51,7 +57,7 @@ export const ElementObserver = () => {
     <>
       <article className="layout-grid">
         <aside className="layout-grid-aside">
-          <h2>Controls</h2>
+          <h2>{copy.controls[language as keyof Language]}</h2>
 
           <label>
             Root margin X ↔ {optionsState.rootX + "%"}
@@ -115,7 +121,7 @@ threshold: ${optionsState.threshold}
           </p>
           <p>
             Root margin justerar "fönstret" som händelsen sker i. Enhet är
-            procent eller cssvärden. Ordningen är top right bottom left. I det
+            procent eller CSS-värden. Ordningen är top right bottom left. I det
             här exemplet sätts top & bottom respektive left & right till samma
             värde för att illustrera funktionaliteten. De går att sätta
             individuellt.
@@ -126,6 +132,9 @@ threshold: ${optionsState.threshold}
             och 1. Vid 0 sker händelsen så fort elementet nuddar fönstret och
             vid 1 sker händelsen när hela elementet är inuti fönstret.
           </p>
+          <button type="button" onClick={toggleLanguage}>
+            {language === "english" ? "Svenska" : "English"}
+          </button>
         </aside>
         <section className="layout-grid-main">
           <div

@@ -47,6 +47,10 @@ input {
   width: 100%;
 }
 
+p {
+  margin-bottom: 0.5rem;
+}
+
 .wrapper-element {
   position: relative;
   overflow-y: scroll;

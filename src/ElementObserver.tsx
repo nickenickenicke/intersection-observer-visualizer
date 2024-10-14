@@ -58,7 +58,6 @@ export const ElementObserver = () => {
       <article className="layout-grid">
         <aside className="layout-grid-aside">
           <h2>{copy.controls[language as keyof Language]}</h2>
-
           <label>
             Root margin X ↔ {optionsState.rootX + "%"}
             <input
@@ -74,7 +73,6 @@ export const ElementObserver = () => {
               }}
             />
           </label>
-
           <label>
             Root margin Y ↕ {optionsState.rootY + "%"}
             <input
@@ -90,7 +88,6 @@ export const ElementObserver = () => {
               }}
             />
           </label>
-
           <label>
             Threshold {optionsState.threshold}
             <input
@@ -115,23 +112,9 @@ threshold: ${optionsState.threshold}
 }
             `}</code>
           </pre>
-          <p>
-            Root är det scrollbara elementet som händelsen sker i. Om man anger{" "}
-            <code>null</code> blir det viewporten.
-          </p>
-          <p>
-            Root margin justerar "fönstret" som händelsen sker i. Enhet är
-            procent eller CSS-värden. Ordningen är top right bottom left. I det
-            här exemplet sätts top & bottom respektive left & right till samma
-            värde för att illustrera funktionaliteten. De går att sätta
-            individuellt.
-          </p>
-          <p>
-            Threshold är hur stor del av det observerade elementet som måste
-            vara inuti "fönstret" för att händelsen ska ske. Enhet är mellan 0
-            och 1. Vid 0 sker händelsen så fort elementet nuddar fönstret och
-            vid 1 sker händelsen när hela elementet är inuti fönstret.
-          </p>
+          {copy.paragraphs.map((paragraph, index) => (
+            <p key={index}>{paragraph[language as keyof Language]}</p>
+          ))}
           <button type="button" onClick={toggleLanguage}>
             {language === "english" ? "Svenska" : "English"}
           </button>
@@ -162,11 +145,14 @@ threshold: ${optionsState.threshold}
                     : "title-element-status"
                 }
               >
-                {!observed && "inte "}
-                observerad
+                {observed
+                  ? copy.observed[language as keyof Language]
+                  : copy.notObserved[language as keyof Language]}
               </span>
             </div>
-            <h3 className="scroll-down">↓ Scrolla ner ↓</h3>
+            <h3 className="scroll-down">
+              ↓ {copy.scrollDown[language as keyof Language]} ↓
+            </h3>
             <div
               ref={toBeObserved}
               className={
@@ -175,8 +161,9 @@ threshold: ${optionsState.threshold}
                   : "scrolling-element"
               }
             >
-              {!observed && "inte "}
-              observerad
+              {observed
+                ? copy.observed[language as keyof Language]
+                : copy.notObserved[language as keyof Language]}
             </div>
           </div>
         </section>

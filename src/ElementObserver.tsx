@@ -69,8 +69,6 @@ export const ElementObserver = () => {
             />
           </label>
 
-          <br />
-
           <label>
             Root margin Y ↕ {optionsState.rootY + "%"}
             <input
@@ -86,8 +84,6 @@ export const ElementObserver = () => {
               }}
             />
           </label>
-
-          <br />
 
           <label>
             Threshold {optionsState.threshold}

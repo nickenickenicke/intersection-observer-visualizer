@@ -29,6 +29,7 @@ html {
   background-color: grey;
   grid-column: 2 / 3;
   grid-row: 1;
+  padding: 0.5rem;
 }
 
 .layout-grid-main {
@@ -39,6 +40,11 @@ html {
   justify-content: center;
   container: layout-grid-main / inline-size;
   position: relative;
+}
+
+input {
+  display: block;
+  width: 100%;
 }
 
 .wrapper-element {

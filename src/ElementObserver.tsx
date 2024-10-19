@@ -107,7 +107,7 @@ export const ElementObserver = () => {
             <code>{`
 options = {
 root: null | Element,
-rootMargin: "${optionsState.rootX}% ${optionsState.rootY}% ${optionsState.rootX}% ${optionsState.rootY}%",
+rootMargin: "${optionsState.rootY}% ${optionsState.rootX}% ${optionsState.rootY}% ${optionsState.rootX}%",
 threshold: ${optionsState.threshold} 
 }
             `}</code>
@@ -127,8 +127,7 @@ threshold: ${optionsState.threshold}
                 "--root-margin-block": optionsState.rootX,
                 "--root-margin-inline": optionsState.rootY,
               } as CSSProperties
-            }
-          >
+            }>
             <div className="root-margin-overlay-top"></div>
             <div className="root-margin-overlay-left"></div>
             <div className="root-margin-overlay-inner"></div>
@@ -143,8 +142,7 @@ threshold: ${optionsState.threshold}
                   observed
                     ? "title-element-status title-element-status-observed"
                     : "title-element-status"
-                }
-              >
+                }>
                 {observed
                   ? copy.observed[language as keyof Language]
                   : copy.notObserved[language as keyof Language]}
@@ -159,8 +157,7 @@ threshold: ${optionsState.threshold}
                 observed
                   ? "scrolling-element scrolling-element-observed"
                   : "scrolling-element"
-              }
-            >
+              }>
               {observed
                 ? copy.observed[language as keyof Language]
                 : copy.notObserved[language as keyof Language]}

@@ -15,6 +15,10 @@
 
 html {
   writing-mode: horizontal-lr;
+  line-height: 1.4;
+  letter-spacing: 0.1px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 .layout-grid {
@@ -26,10 +30,12 @@ html {
 }
 
 .layout-grid-aside {
-  background-color: grey;
+  background-color: #f6f8fa;
   grid-column: 2 / 3;
   grid-row: 1;
   padding: 0.5rem;
+  border-left: 1px solid black;
+  overflow-y: scroll;
 }
 
 .layout-grid-main {
@@ -48,11 +54,13 @@ input {
 }
 
 p {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 pre {
-  margin-block: 0.5rem;
+  background-color: rgb(205, 205, 205);
+  padding: 0.5rem 0.5rem;
+  margin: 0.5rem -0.5rem;
 }
 
 .wrapper-element {
@@ -83,6 +91,7 @@ pre {
 }
 
 .title-element-status {
+  padding-inline: 1rem;
   background-color: var(--color-not-observed);
 }
 .title-element-status-observed {
@@ -147,6 +156,7 @@ pre {
 }
 
 .scrolling-element {
+  padding: 0.5rem;
   position: relative;
   margin: calc(var(--wrapper-inline) / 2) auto calc(var(--wrapper-inline) * 2);
   width: 200px;

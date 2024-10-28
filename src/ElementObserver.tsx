@@ -58,6 +58,13 @@ export const ElementObserver = () => {
     <>
       <article className="layout-grid">
         <aside className="layout-grid-aside">
+          <button
+            type="button"
+            onClick={toggleLanguage}
+            className="language-button"
+          >
+            {language === "english" ? "🇸🇪" : "🇬🇧"}
+          </button>
           <h2>{copy.controls[language as keyof Language]}</h2>
           <label>
             Root margin X ↔ {optionsState.rootX + "%"}
@@ -116,9 +123,6 @@ threshold: ${optionsState.threshold}
               <Markdown>{paragraph[language as keyof Language]}</Markdown>
             </p>
           ))}
-          <button type="button" onClick={toggleLanguage}>
-            {language === "english" ? "Svenska" : "English"}
-          </button>
         </aside>
         <section className="layout-grid-main">
           <div

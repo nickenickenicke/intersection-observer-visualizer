@@ -5,6 +5,10 @@
   --root-margin-inline: -10;
   --color-not-observed: rgb(255, 138, 138);
   --color-observed: rgb(157, 255, 138);
+  --color-code-bg: rgb(224, 224, 224);
+  --color-code: #9333ea;
+  --margin-s: 0.5rem;
+  --margin-m: 1rem;
 }
 
 * {
@@ -33,7 +37,7 @@ html {
   background-color: #f6f8fa;
   grid-column: 2 / 3;
   grid-row: 1;
-  padding: 0.5rem;
+  padding: var(--margin-s);
   border-left: 1px solid black;
   overflow-y: scroll;
 }
@@ -53,14 +57,30 @@ input {
   width: 100%;
 }
 
+h2 {
+  letter-spacing: 0.5px;
+  margin-bottom: var(--margin-s);
+}
+
 p {
-  margin-bottom: 1rem;
+  margin-bottom: var(--margin-m);
 }
 
 pre {
-  background-color: rgb(205, 205, 205);
-  padding: 0.5rem 0.5rem;
-  margin: 0.5rem -0.5rem;
+  padding: var(--margin-s);
+  margin-block: var(--margin-m);
+  background-color: var(--color-code-bg);
+  border-radius: 0.25rem;
+}
+
+code {
+  background-color: var(--color-code-bg);
+  color: var(--color-code);
+}
+
+p code {
+  padding: 0.25rem;
+  border-radius: 0.25rem;
 }
 
 .language-button {

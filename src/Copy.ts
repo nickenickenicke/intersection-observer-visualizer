@@ -19,9 +19,9 @@ export const copy: Copy = {
   paragraphs: [
     {
       swedish:
-        "Root är det scrollbara elementet som händelsen sker i. Om man anger <code>null</code> blir det viewporten.",
+        "Root är det scrollbara elementet som händelsen sker i. Om man anger `null` blir det viewporten.",
       english:
-        "Root is the scrollable element where the event occurs. If you set it to <code>null</code> it will be the viewport.",
+        "Root is the scrollable element where the event occurs. If you set it to `null` it will be the viewport.",
     },
     {
       swedish:

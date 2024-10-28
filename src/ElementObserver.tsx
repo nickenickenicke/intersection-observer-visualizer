@@ -1,5 +1,6 @@
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { copy, Language } from "./Copy";
+import Markdown from "react-markdown";
 
 interface InterOptions {
   rootX: number;
@@ -104,16 +105,16 @@ export const ElementObserver = () => {
             />
           </label>
           <pre>
-            <code>{`
-options = {
+            <code>{`options = {
 root: null | Element,
 rootMargin: "${optionsState.rootY}% ${optionsState.rootX}% ${optionsState.rootY}% ${optionsState.rootX}%",
 threshold: ${optionsState.threshold} 
-}
-            `}</code>
+}`}</code>
           </pre>
           {copy.paragraphs.map((paragraph, index) => (
-            <p key={index}>{paragraph[language as keyof Language]}</p>
+            <p key={index}>
+              <Markdown>{paragraph[language as keyof Language]}</Markdown>
+            </p>
           ))}
           <button type="button" onClick={toggleLanguage}>
             {language === "english" ? "Svenska" : "English"}
@@ -127,7 +128,8 @@ threshold: ${optionsState.threshold}
                 "--root-margin-block": optionsState.rootX,
                 "--root-margin-inline": optionsState.rootY,
               } as CSSProperties
-            }>
+            }
+          >
             <div className="root-margin-overlay-top"></div>
             <div className="root-margin-overlay-left"></div>
             <div className="root-margin-overlay-inner"></div>
@@ -142,7 +144,8 @@ threshold: ${optionsState.threshold}
                   observed
                     ? "title-element-status title-element-status-observed"
                     : "title-element-status"
-                }>
+                }
+              >
                 {observed
                   ? copy.observed[language as keyof Language]
                   : copy.notObserved[language as keyof Language]}
@@ -157,7 +160,8 @@ threshold: ${optionsState.threshold}
                 observed
                   ? "scrolling-element scrolling-element-observed"
                   : "scrolling-element"
-              }>
+              }
+            >
               {observed
                 ? copy.observed[language as keyof Language]
                 : copy.notObserved[language as keyof Language]}

@@ -51,6 +51,10 @@ p {
   margin-bottom: 0.5rem;
 }
 
+pre {
+  margin-block: 0.5rem;
+}
+
 .wrapper-element {
   position: relative;
   overflow-y: scroll;

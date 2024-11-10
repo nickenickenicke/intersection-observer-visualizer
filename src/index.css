@@ -3,6 +3,10 @@
   --wrapper-inline: 400px;
   --root-margin-block: 10;
   --root-margin-inline: -10;
+  --root-margin-top: 0px;
+  --root-margin-left: 0px;
+  --root-margin-height-scale: 1.2;
+  --root-margin-width-scale: 0.8;
   --color-not-observed: rgb(255, 138, 138);
   --color-observed: rgb(157, 255, 138);
   --color-code-bg: rgb(224, 224, 224);
@@ -130,56 +134,6 @@ p code {
   background-color: var(--color-observed);
 }
 
-.root-margin-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 11;
-  pointer-events: none;
-  display: grid;
-  grid-template-columns:
-    1fr calc(var(--wrapper-block) * (var(--root-margin-block) / 50 + 1))
-    1fr;
-  grid-template-rows:
-    1fr calc(var(--wrapper-inline) * (var(--root-margin-inline) / 50 + 1))
-    1fr;
-}
-
-.root-margin-overlay-top {
-  grid-column: 1/4;
-  grid-row: 1/2;
-}
-
-.root-margin-overlay-left {
-  grid-column: 1/2;
-  grid-row: 2/3;
-}
-
-.root-margin-overlay-right {
-  grid-column: 3/4;
-  grid-row: 2/3;
-}
-
-.root-margin-overlay-bottom {
-  grid-column: 1/4;
-  grid-row: 3/4;
-}
-
-.root-margin-overlay-inner {
-  position: relative;
-  grid-column: 2/3;
-  grid-row: 2/3;
-  border: 2px dashed blue;
-}
-
-.root-margin-overlay-inner::after {
-  content: "Root Margin";
-  position: absolute;
-  color: blue;
-  top: -1.5rem;
-  left: 0;
-}
-
 .scroll-down {
   display: flex;
   height: 90%;
@@ -199,4 +153,33 @@ p code {
 
 .scrolling-element-observed {
   background: var(--color-observed);
+}
+
+.root-margin {
+  --calculated-width: calc(
+    var(--wrapper-block) * var(--root-margin-width-scale)
+  );
+  --calculated-height: calc(
+    var(--wrapper-inline) * var(--root-margin-height-scale)
+  );
+
+  border: 2px dashed blue;
+
+  position: absolute;
+  z-index: 11;
+  pointer-events: none;
+  width: var(--calculated-width);
+  height: var(--calculated-height);
+  left: calc(50% - var(--calculated-width) / 2);
+  top: calc(50% - var(--calculated-height) / 2);
+  transform: translateX(var(--root-margin-left))
+    translateY(var(--root-margin-top));
+}
+
+.root-margin::after {
+  content: "Root Margin";
+  position: absolute;
+  color: blue;
+  top: -1.5rem;
+  left: 0;
 }

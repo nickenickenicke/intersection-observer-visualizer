@@ -1,6 +1,11 @@
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { InterOptions } from "../ElementObserver";
 import { copy, Language } from "../Copy";
+import {
+  calculateOffsetLeft,
+  calculateOffsetTop,
+  calculateScale,
+} from "../utils";
 
 interface MainProps {
   optionsState: InterOptions;
@@ -15,7 +20,7 @@ export const Main = ({ optionsState, language }: MainProps) => {
   useEffect(() => {
     const options: IntersectionObserverInit = {
       root: boundingContainer.current,
-      rootMargin: `${optionsState.rootY}% ${optionsState.rootX}% ${optionsState.rootY}% ${optionsState.rootX}%`,
+      rootMargin: `${optionsState.rootTop}% ${optionsState.rootRight}% ${optionsState.rootBottom}% ${optionsState.rootLeft}%`,
       threshold: optionsState.threshold,
     };
     const observer = new IntersectionObserver((entries) => {
@@ -31,25 +36,38 @@ export const Main = ({ optionsState, language }: MainProps) => {
     return () => {
       observer.disconnect();
     };
-  }, [optionsState.rootX, optionsState.rootY, optionsState.threshold]);
+  }, [
+    optionsState.rootLeft,
+    optionsState.rootRight,
+    optionsState.rootTop,
+    optionsState.rootBottom,
+    optionsState.threshold,
+  ]);
   return (
     <>
       <section className="layout-grid-main">
         <div
-          className="root-margin-overlay"
+          className="root-margin"
           style={
             {
-              "--root-margin-block": optionsState.rootX,
-              "--root-margin-inline": optionsState.rootY,
+              "--root-margin-top": calculateOffsetTop(
+                optionsState.rootTop,
+                optionsState.rootBottom
+              ),
+              "--root-margin-left": calculateOffsetLeft(
+                optionsState.rootLeft,
+                optionsState.rootRight
+              ),
+              "--root-margin-height-scale": calculateScale(
+                optionsState.rootTop,
+                optionsState.rootBottom
+              ),
+              "--root-margin-width-scale": calculateScale(
+                optionsState.rootLeft,
+                optionsState.rootRight
+              ),
             } as CSSProperties
-          }
-        >
-          <div className="root-margin-overlay-top"></div>
-          <div className="root-margin-overlay-left"></div>
-          <div className="root-margin-overlay-inner"></div>
-          <div className="root-margin-overlay-right"></div>
-          <div className="root-margin-overlay-bottom"></div>
-        </div>
+          }></div>
         <div ref={boundingContainer} className="wrapper-element">
           <div className="wrapper-titles">
             <span className="root-title">Root</span>
@@ -58,8 +76,7 @@ export const Main = ({ optionsState, language }: MainProps) => {
                 observed
                   ? "title-element-status title-element-status-observed"
                   : "title-element-status"
-              }
-            >
+              }>
               {observed
                 ? copy.observed[language as keyof Language]
                 : copy.notObserved[language as keyof Language]}
@@ -74,8 +91,7 @@ export const Main = ({ optionsState, language }: MainProps) => {
               observed
                 ? "scrolling-element scrolling-element-observed"
                 : "scrolling-element"
-            }
-          >
+            }>
             {observed
               ? copy.observed[language as keyof Language]
               : copy.notObserved[language as keyof Language]}

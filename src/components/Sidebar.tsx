@@ -1,7 +1,7 @@
 import Markdown from "react-markdown";
 import { copy, Language } from "../Copy";
 import { InterOptions } from "../ElementObserver";
-import { calculateOffsetTop } from "../utils";
+import { calculateOffsetTop, calculateScale } from "../utils";
 
 interface SidebarProps {
   optionsState: InterOptions;
@@ -95,7 +95,10 @@ threshold: ${optionsState.threshold}
         </pre>
         <p>
           Offset top:{" "}
-          {calculateOffsetTop(optionsState.rootTop, optionsState.rootBottom)}
+          {calculateOffsetTop(optionsState.rootTop, optionsState.rootBottom)}{" "}
+          <br />
+          Scale change Y:{" "}
+          {calculateScale(optionsState.rootTop, optionsState.rootBottom)} <br />
         </p>
         {copy.paragraphs.map((paragraph, index) => (
           <p key={index}>

@@ -1,7 +1,7 @@
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { InterOptions } from "../ElementObserver";
 import { copy, Language } from "../Copy";
-import { calculateOffsetTop } from "../utils";
+import { calculateOffsetTop, calculateScale } from "../utils";
 
 interface MainProps {
   optionsState: InterOptions;
@@ -46,6 +46,10 @@ export const Main = ({ optionsState, language }: MainProps) => {
           style={
             {
               "--root-margin-top": calculateOffsetTop(
+                optionsState.rootTop,
+                optionsState.rootBottom
+              ),
+              "--root-margin-height-scale": calculateScale(
                 optionsState.rootTop,
                 optionsState.rootBottom
               ),

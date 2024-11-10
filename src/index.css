@@ -4,7 +4,7 @@
   --root-margin-block: 10;
   --root-margin-inline: -10;
   --root-margin-top: 0px;
-  --root-margin-height-scale: 0;
+  --root-margin-height-scale: 1.2;
   --color-not-observed: rgb(255, 138, 138);
   --color-observed: rgb(157, 255, 138);
   --color-code-bg: rgb(224, 224, 224);
@@ -208,7 +208,9 @@ p code {
 
 .new-rm {
   --calculated-width: calc(var(--wrapper-block) * 0.8);
-  --calculated-height: calc(var(--wrapper-inline) * 1);
+  --calculated-height: calc(
+    var(--wrapper-inline) * var(--root-margin-height-scale)
+  );
   position: absolute;
   width: var(--calculated-width);
   height: var(--calculated-height);

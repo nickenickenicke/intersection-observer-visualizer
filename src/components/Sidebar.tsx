@@ -15,6 +15,10 @@ export const Sidebar = ({
   updateState,
   toggleLanguage,
 }: SidebarProps) => {
+  const calculateDelta = () => {
+    return optionsState.rootTop - optionsState.rootBottom;
+  };
+
   return (
     <>
       <aside className="layout-grid-aside">
@@ -92,6 +96,7 @@ rootMargin: "${optionsState.rootTop}% ${optionsState.rootX}% ${optionsState.root
 threshold: ${optionsState.threshold} 
 }`}</code>
         </pre>
+        <p>Delta: {calculateDelta()}px</p>
         {copy.paragraphs.map((paragraph, index) => (
           <p key={index}>
             <Markdown>{paragraph[language as keyof Language]}</Markdown>

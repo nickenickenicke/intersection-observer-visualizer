@@ -206,14 +206,14 @@ p code {
 
 .new-rm {
   --calculated-width: calc(var(--wrapper-block) * 0.8);
-  --calculated-height: calc(var(--wrapper-inline) * 1.1);
+  --calculated-height: calc(var(--wrapper-inline) * 1.15);
   position: absolute;
   width: var(--calculated-width);
   height: var(--calculated-height);
   left: calc(50% - var(--calculated-width) / 2);
   top: calc(50% - var(--calculated-height) / 2);
   background: rgba(150, 91, 91, 0.717);
-  transform: translateX(0) translateY(-40px);
+  transform: translateX(0) translateY(30px);
 }
 
 /* 
@@ -227,25 +227,25 @@ p code {
   --calculated-height: calc(var(--wrapper-inline) * 0.85);
   transform: translateX(0) translateY(-30px); 
 
-  With top -5% and bottom -15% should be:
-  --calculated-height: calc(var(--wrapper-inline) * 0.8);
-  transform: translateX(0) translateY(-20px);
-
-  With top 5% and bottom -5% should be:
-  --calculated-height: calc(var(--wrapper-inline) * 1.1);
-  transform: translateX(0) translateY(0); 
-
   With top 5% and bottom -10% should be:
-  --calculated-height: calc(var(--wrapper-inline) * 1.15);
-  transform: translateX(0) translateY(10px); 
+  --calculated-height: calc(var(--wrapper-inline) * 0.95);
+  transform: translateX(0) translateY(-30px);
 
   With top 15% and bottom 0% should be:
   --calculated-height: calc(var(--wrapper-inline) * 1.15);
   transform: translateX(0) translateY(-30px); 
 
-  With top 15% and bottom -5% should be:
-  --calculated-height: calc(var(--wrapper-inline) * 1.1);
-  transform: translateX(0) translateY(-40px);
+  With top -15% and bottom 0% should be:
+  --calculated-height: calc(var(--wrapper-inline) * 0.85);
+  transform: translateX(0) translateY(30px); 
+
+  With top -10% and bottom 5% should be:
+  --calculated-height: calc(var(--wrapper-inline) * 0.95);
+  transform: translateX(0) translateY(30px); 
+
+  With top 0% and bottom 15% should be:
+  --calculated-height: calc(var(--wrapper-inline) * 1.15);
+  transform: translateX(0) translateY(30px); 
   
   
   

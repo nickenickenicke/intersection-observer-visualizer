@@ -3,6 +3,8 @@
   --wrapper-inline: 400px;
   --root-margin-block: 10;
   --root-margin-inline: -10;
+  --root-margin-top: 0px;
+  --root-margin-height-scale: 0;
   --color-not-observed: rgb(255, 138, 138);
   --color-observed: rgb(157, 255, 138);
   --color-code-bg: rgb(224, 224, 224);
@@ -206,14 +208,14 @@ p code {
 
 .new-rm {
   --calculated-width: calc(var(--wrapper-block) * 0.8);
-  --calculated-height: calc(var(--wrapper-inline) * 1.15);
+  --calculated-height: calc(var(--wrapper-inline) * 1);
   position: absolute;
   width: var(--calculated-width);
   height: var(--calculated-height);
   left: calc(50% - var(--calculated-width) / 2);
   top: calc(50% - var(--calculated-height) / 2);
   background: rgba(150, 91, 91, 0.717);
-  transform: translateX(0) translateY(30px);
+  transform: translateX(0) translateY(var(--root-margin-top));
 }
 
 /* 
@@ -246,8 +248,4 @@ p code {
   With top 0% and bottom 15% should be:
   --calculated-height: calc(var(--wrapper-inline) * 1.15);
   transform: translateX(0) translateY(30px); 
-  
-  
-  
-  
   */

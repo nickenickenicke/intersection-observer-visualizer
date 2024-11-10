@@ -1,6 +1,7 @@
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { InterOptions } from "../ElementObserver";
 import { copy, Language } from "../Copy";
+import { calculateOffsetTop } from "../utils";
 
 interface MainProps {
   optionsState: InterOptions;
@@ -40,7 +41,16 @@ export const Main = ({ optionsState, language }: MainProps) => {
   return (
     <>
       <section className="layout-grid-main">
-        <div className="new-rm"></div>
+        <div
+          className="new-rm"
+          style={
+            {
+              "--root-margin-top": calculateOffsetTop(
+                optionsState.rootTop,
+                optionsState.rootBottom
+              ),
+            } as CSSProperties
+          }></div>
         <div
           className="root-margin-overlay"
           style={

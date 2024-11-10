@@ -21,8 +21,7 @@ export const Sidebar = ({
         <button
           type="button"
           onClick={toggleLanguage}
-          className="language-button"
-        >
+          className="language-button">
           {language === "english" ? "🇸🇪" : "🇬🇧"}
         </button>
         <h2>{copy.controls[language as keyof Language]}</h2>
@@ -42,7 +41,7 @@ export const Sidebar = ({
           />
         </label>
         <label>
-          Root margin Y ↕ {optionsState.rootY + "%"}
+          Root margin Top ↕ {optionsState.rootTop + "%"}
           <input
             type="range"
             name=""
@@ -50,9 +49,24 @@ export const Sidebar = ({
             max={50}
             min={-50}
             step={5}
-            value={optionsState.rootY}
+            value={optionsState.rootTop}
             onChange={(e) => {
-              updateState("rootY", parseInt(e.target.value));
+              updateState("rootTop", parseInt(e.target.value));
+            }}
+          />
+        </label>
+        <label>
+          Root margin Bottom ↕ {optionsState.rootBottom + "%"}
+          <input
+            type="range"
+            name=""
+            id=""
+            max={50}
+            min={-50}
+            step={5}
+            value={optionsState.rootBottom}
+            onChange={(e) => {
+              updateState("rootBottom", parseInt(e.target.value));
             }}
           />
         </label>
@@ -74,7 +88,7 @@ export const Sidebar = ({
         <pre>
           <code>{`options = {
 root: null | Element,
-rootMargin: "${optionsState.rootY}% ${optionsState.rootX}% ${optionsState.rootY}% ${optionsState.rootX}%",
+rootMargin: "${optionsState.rootTop}% ${optionsState.rootX}% ${optionsState.rootTop}% ${optionsState.rootX}%",
 threshold: ${optionsState.threshold} 
 }`}</code>
         </pre>

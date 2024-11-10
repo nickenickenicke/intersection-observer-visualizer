@@ -15,7 +15,7 @@ export const Main = ({ optionsState, language }: MainProps) => {
   useEffect(() => {
     const options: IntersectionObserverInit = {
       root: boundingContainer.current,
-      rootMargin: `${optionsState.rootY}% ${optionsState.rootX}% ${optionsState.rootY}% ${optionsState.rootX}%`,
+      rootMargin: `${optionsState.rootTop}% ${optionsState.rootX}% ${optionsState.rootBottom}% ${optionsState.rootX}%`,
       threshold: optionsState.threshold,
     };
     const observer = new IntersectionObserver((entries) => {
@@ -31,19 +31,24 @@ export const Main = ({ optionsState, language }: MainProps) => {
     return () => {
       observer.disconnect();
     };
-  }, [optionsState.rootX, optionsState.rootY, optionsState.threshold]);
+  }, [
+    optionsState.rootX,
+    optionsState.rootTop,
+    optionsState.rootBottom,
+    optionsState.threshold,
+  ]);
   return (
     <>
       <section className="layout-grid-main">
+        <div className="new-rm"></div>
         <div
           className="root-margin-overlay"
           style={
             {
               "--root-margin-block": optionsState.rootX,
-              "--root-margin-inline": optionsState.rootY,
+              "--root-margin-inline": optionsState.rootTop,
             } as CSSProperties
-          }
-        >
+          }>
           <div className="root-margin-overlay-top"></div>
           <div className="root-margin-overlay-left"></div>
           <div className="root-margin-overlay-inner"></div>
@@ -58,8 +63,7 @@ export const Main = ({ optionsState, language }: MainProps) => {
                 observed
                   ? "title-element-status title-element-status-observed"
                   : "title-element-status"
-              }
-            >
+              }>
               {observed
                 ? copy.observed[language as keyof Language]
                 : copy.notObserved[language as keyof Language]}
@@ -74,8 +78,7 @@ export const Main = ({ optionsState, language }: MainProps) => {
               observed
                 ? "scrolling-element scrolling-element-observed"
                 : "scrolling-element"
-            }
-          >
+            }>
             {observed
               ? copy.observed[language as keyof Language]
               : copy.notObserved[language as keyof Language]}

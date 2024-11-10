@@ -200,3 +200,18 @@ p code {
 .scrolling-element-observed {
   background: var(--color-observed);
 }
+
+/* --wrapper-block: 700px;
+  --wrapper-inline: 400px; */
+
+.new-rm {
+  --calculated-width: calc(var(--wrapper-block) * 0.8);
+  --calculated-height: calc(var(--wrapper-inline) * 0.95);
+  position: absolute;
+  width: var(--calculated-width);
+  height: var(--calculated-height);
+  left: calc(50% - var(--calculated-width) / 2);
+  top: calc(50% - var(--calculated-height) / 2);
+  background: rgba(150, 91, 91, 0.717);
+  transform: translateX(0) translateY(10px);
+}

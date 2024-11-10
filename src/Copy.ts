@@ -25,9 +25,9 @@ export const copy: Copy = {
     },
     {
       swedish:
-        'Root margin justerar "fönstret" som händelsen sker i. Enhet är procent eller CSS-värden. Ordningen är top right bottom left. I det här exemplet sätts top & bottom respektive left & right till samma värde för att illustrera funktionaliteten. De går att sätta individuellt.',
+        'Root margin justerar "fönstret" som händelsen sker i. Enhet är procent eller CSS-värden. Ordningen är top right bottom left.',
       english:
-        'Root margin adjusts the "window" where the event occurs. The unit is percent or CSS values. The order is top right bottom left. In this example, top & bottom and left & right are set to the same value to illustrate the functionality. They can be set individually.',
+        'Root margin adjusts the "window" where the event occurs. The unit is percent or CSS values. The order is top right bottom left.',
     },
     {
       swedish:

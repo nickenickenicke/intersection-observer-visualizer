@@ -1,11 +1,6 @@
 import Markdown from "react-markdown";
 import { copy, Language } from "../Copy";
 import { InterOptions } from "../ElementObserver";
-import {
-  calculateOffsetLeft,
-  calculateOffsetTop,
-  calculateScale,
-} from "../utils";
 
 interface SidebarProps {
   optionsState: InterOptions;
@@ -112,20 +107,6 @@ rootMargin: "${optionsState.rootTop}% ${optionsState.rootRight}% ${optionsState.
 threshold: ${optionsState.threshold} 
 }`}</code>
         </pre>
-        <p>
-          Offset left:{" "}
-          {calculateOffsetLeft(optionsState.rootLeft, optionsState.rootRight)}{" "}
-          <br />
-          Scale change Y:{" "}
-          {calculateScale(optionsState.rootLeft, optionsState.rootRight)} <br />
-        </p>
-        <p>
-          Offset top:{" "}
-          {calculateOffsetTop(optionsState.rootTop, optionsState.rootBottom)}{" "}
-          <br />
-          Scale change Y:{" "}
-          {calculateScale(optionsState.rootTop, optionsState.rootBottom)} <br />
-        </p>
         {copy.paragraphs.map((paragraph, index) => (
           <p key={index}>
             <Markdown>{paragraph[language as keyof Language]}</Markdown>

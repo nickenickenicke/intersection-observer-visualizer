@@ -134,56 +134,6 @@ p code {
   background-color: var(--color-observed);
 }
 
-.root-margin-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 11;
-  pointer-events: none;
-  display: grid;
-  grid-template-columns:
-    1fr calc(var(--wrapper-block) * (var(--root-margin-block) / 50 + 1))
-    1fr;
-  grid-template-rows:
-    1fr calc(var(--wrapper-inline) * (var(--root-margin-inline) / 50 + 1))
-    1fr;
-}
-
-.root-margin-overlay-top {
-  grid-column: 1/4;
-  grid-row: 1/2;
-}
-
-.root-margin-overlay-left {
-  grid-column: 1/2;
-  grid-row: 2/3;
-}
-
-.root-margin-overlay-right {
-  grid-column: 3/4;
-  grid-row: 2/3;
-}
-
-.root-margin-overlay-bottom {
-  grid-column: 1/4;
-  grid-row: 3/4;
-}
-
-.root-margin-overlay-inner {
-  position: relative;
-  grid-column: 2/3;
-  grid-row: 2/3;
-  border: 2px dashed blue;
-}
-
-.root-margin-overlay-inner::after {
-  content: "Root Margin";
-  position: absolute;
-  color: blue;
-  top: -1.5rem;
-  left: 0;
-}
-
 .scroll-down {
   display: flex;
   height: 90%;
@@ -205,54 +155,31 @@ p code {
   background: var(--color-observed);
 }
 
-/* --wrapper-block: 700px;
-  --wrapper-inline: 400px; */
-
-.new-rm {
+.root-margin {
   --calculated-width: calc(
     var(--wrapper-block) * var(--root-margin-width-scale)
   );
   --calculated-height: calc(
     var(--wrapper-inline) * var(--root-margin-height-scale)
   );
+
+  border: 2px dashed blue;
+
   position: absolute;
+  z-index: 11;
+  pointer-events: none;
   width: var(--calculated-width);
   height: var(--calculated-height);
   left: calc(50% - var(--calculated-width) / 2);
   top: calc(50% - var(--calculated-height) / 2);
-  background: rgba(150, 91, 91, 0.717);
   transform: translateX(var(--root-margin-left))
     translateY(var(--root-margin-top));
 }
 
-/* 
-
-
-  With top 0% and bottom 0% should be:
-  --calculated-height: calc(var(--wrapper-inline) * 1);
-  transform: translateX(0) translateY(0);
-
-  With top 0% and bottom -15% should be:
-  --calculated-height: calc(var(--wrapper-inline) * 0.85);
-  transform: translateX(0) translateY(-30px); 
-
-  With top 5% and bottom -10% should be:
-  --calculated-height: calc(var(--wrapper-inline) * 0.95);
-  transform: translateX(0) translateY(-30px);
-
-  With top 15% and bottom 0% should be:
-  --calculated-height: calc(var(--wrapper-inline) * 1.15);
-  transform: translateX(0) translateY(-30px); 
-
-  With top -15% and bottom 0% should be:
-  --calculated-height: calc(var(--wrapper-inline) * 0.85);
-  transform: translateX(0) translateY(30px); 
-
-  With top -10% and bottom 5% should be:
-  --calculated-height: calc(var(--wrapper-inline) * 0.95);
-  transform: translateX(0) translateY(30px); 
-
-  With top 0% and bottom 15% should be:
-  --calculated-height: calc(var(--wrapper-inline) * 1.15);
-  transform: translateX(0) translateY(30px); 
-  */
+.root-margin::after {
+  content: "Root Margin";
+  position: absolute;
+  color: blue;
+  top: -1.5rem;
+  left: 0;
+}

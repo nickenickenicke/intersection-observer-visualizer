@@ -47,7 +47,7 @@ export const Main = ({ optionsState, language }: MainProps) => {
     <>
       <section className="layout-grid-main">
         <div
-          className="new-rm"
+          className="root-margin"
           style={
             {
               "--root-margin-top": calculateOffsetTop(
@@ -68,20 +68,6 @@ export const Main = ({ optionsState, language }: MainProps) => {
               ),
             } as CSSProperties
           }></div>
-        <div
-          className="root-margin-overlay"
-          style={
-            {
-              "--root-margin-block": optionsState.rootLeft,
-              "--root-margin-inline": optionsState.rootTop,
-            } as CSSProperties
-          }>
-          <div className="root-margin-overlay-top"></div>
-          <div className="root-margin-overlay-left"></div>
-          <div className="root-margin-overlay-inner"></div>
-          <div className="root-margin-overlay-right"></div>
-          <div className="root-margin-overlay-bottom"></div>
-        </div>
         <div ref={boundingContainer} className="wrapper-element">
           <div className="wrapper-titles">
             <span className="root-title">Root</span>

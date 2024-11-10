@@ -3,7 +3,8 @@ import { Sidebar } from "./components/Sidebar";
 import { Main } from "./components/Main";
 
 export interface InterOptions {
-  rootX: number;
+  rootLeft: number;
+  rootRight: number;
   rootTop: number;
   rootBottom: number;
   threshold: number;
@@ -12,7 +13,8 @@ export interface InterOptions {
 export const ElementObserver = () => {
   const [language, setLanguage] = useState("swedish");
   const [optionsState, setOptionsState] = useState<InterOptions>({
-    rootX: -10,
+    rootLeft: -10,
+    rootRight: -10,
     rootTop: 10,
     rootBottom: 10,
     threshold: 1,

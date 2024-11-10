@@ -1,7 +1,11 @@
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { InterOptions } from "../ElementObserver";
 import { copy, Language } from "../Copy";
-import { calculateOffsetTop, calculateScale } from "../utils";
+import {
+  calculateOffsetLeft,
+  calculateOffsetTop,
+  calculateScale,
+} from "../utils";
 
 interface MainProps {
   optionsState: InterOptions;
@@ -16,7 +20,7 @@ export const Main = ({ optionsState, language }: MainProps) => {
   useEffect(() => {
     const options: IntersectionObserverInit = {
       root: boundingContainer.current,
-      rootMargin: `${optionsState.rootTop}% ${optionsState.rootX}% ${optionsState.rootBottom}% ${optionsState.rootX}%`,
+      rootMargin: `${optionsState.rootTop}% ${optionsState.rootRight}% ${optionsState.rootBottom}% ${optionsState.rootLeft}%`,
       threshold: optionsState.threshold,
     };
     const observer = new IntersectionObserver((entries) => {
@@ -33,7 +37,8 @@ export const Main = ({ optionsState, language }: MainProps) => {
       observer.disconnect();
     };
   }, [
-    optionsState.rootX,
+    optionsState.rootLeft,
+    optionsState.rootRight,
     optionsState.rootTop,
     optionsState.rootBottom,
     optionsState.threshold,
@@ -49,9 +54,17 @@ export const Main = ({ optionsState, language }: MainProps) => {
                 optionsState.rootTop,
                 optionsState.rootBottom
               ),
+              "--root-margin-left": calculateOffsetLeft(
+                optionsState.rootLeft,
+                optionsState.rootRight
+              ),
               "--root-margin-height-scale": calculateScale(
                 optionsState.rootTop,
                 optionsState.rootBottom
+              ),
+              "--root-margin-width-scale": calculateScale(
+                optionsState.rootLeft,
+                optionsState.rootRight
               ),
             } as CSSProperties
           }></div>
@@ -59,7 +72,7 @@ export const Main = ({ optionsState, language }: MainProps) => {
           className="root-margin-overlay"
           style={
             {
-              "--root-margin-block": optionsState.rootX,
+              "--root-margin-block": optionsState.rootLeft,
               "--root-margin-inline": optionsState.rootTop,
             } as CSSProperties
           }>

@@ -1,7 +1,11 @@
 import Markdown from "react-markdown";
 import { copy, Language } from "../Copy";
 import { InterOptions } from "../ElementObserver";
-import { calculateOffsetTop, calculateScale } from "../utils";
+import {
+  calculateOffsetLeft,
+  calculateOffsetTop,
+  calculateScale,
+} from "../utils";
 
 interface SidebarProps {
   optionsState: InterOptions;
@@ -27,7 +31,7 @@ export const Sidebar = ({
         </button>
         <h2>{copy.controls[language as keyof Language]}</h2>
         <label>
-          Root margin X ↔ {optionsState.rootX + "%"}
+          Root margin Left ↔ {optionsState.rootLeft + "%"}
           <input
             type="range"
             name=""
@@ -35,9 +39,24 @@ export const Sidebar = ({
             max={50}
             min={-50}
             step={5}
-            value={optionsState.rootX}
+            value={optionsState.rootLeft}
             onChange={(e) => {
-              updateState("rootX", parseInt(e.target.value));
+              updateState("rootLeft", parseInt(e.target.value));
+            }}
+          />
+        </label>
+        <label>
+          Root margin Right ↔ {optionsState.rootRight + "%"}
+          <input
+            type="range"
+            name=""
+            id=""
+            max={50}
+            min={-50}
+            step={5}
+            value={optionsState.rootRight}
+            onChange={(e) => {
+              updateState("rootRight", parseInt(e.target.value));
             }}
           />
         </label>
@@ -89,10 +108,17 @@ export const Sidebar = ({
         <pre>
           <code>{`options = {
 root: null | Element,
-rootMargin: "${optionsState.rootTop}% ${optionsState.rootX}% ${optionsState.rootTop}% ${optionsState.rootX}%",
+rootMargin: "${optionsState.rootTop}% ${optionsState.rootRight}% ${optionsState.rootTop}% ${optionsState.rootLeft}%",
 threshold: ${optionsState.threshold} 
 }`}</code>
         </pre>
+        <p>
+          Offset left:{" "}
+          {calculateOffsetLeft(optionsState.rootLeft, optionsState.rootRight)}{" "}
+          <br />
+          Scale change Y:{" "}
+          {calculateScale(optionsState.rootLeft, optionsState.rootRight)} <br />
+        </p>
         <p>
           Offset top:{" "}
           {calculateOffsetTop(optionsState.rootTop, optionsState.rootBottom)}{" "}

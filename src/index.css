@@ -4,7 +4,9 @@
   --root-margin-block: 10;
   --root-margin-inline: -10;
   --root-margin-top: 0px;
+  --root-margin-left: 0px;
   --root-margin-height-scale: 1.2;
+  --root-margin-width-scale: 0.8;
   --color-not-observed: rgb(255, 138, 138);
   --color-observed: rgb(157, 255, 138);
   --color-code-bg: rgb(224, 224, 224);
@@ -207,7 +209,9 @@ p code {
   --wrapper-inline: 400px; */
 
 .new-rm {
-  --calculated-width: calc(var(--wrapper-block) * 0.8);
+  --calculated-width: calc(
+    var(--wrapper-block) * var(--root-margin-width-scale)
+  );
   --calculated-height: calc(
     var(--wrapper-inline) * var(--root-margin-height-scale)
   );
@@ -217,7 +221,8 @@ p code {
   left: calc(50% - var(--calculated-width) / 2);
   top: calc(50% - var(--calculated-height) / 2);
   background: rgba(150, 91, 91, 0.717);
-  transform: translateX(0) translateY(var(--root-margin-top));
+  transform: translateX(var(--root-margin-left))
+    translateY(var(--root-margin-top));
 }
 
 /* 

@@ -21,18 +21,19 @@ export const Sidebar = ({
         <button
           type="button"
           onClick={toggleLanguage}
-          className="language-button">
+          className="language-button"
+        >
           {language === "english" ? "🇸🇪" : "🇬🇧"}
         </button>
         <h2>{copy.controls[language as keyof Language]}</h2>
         <label>
-          Root margin Left ↔ {optionsState.rootLeft + "%"}
+          Root Margin Left ↔ {optionsState.rootLeft + "%"}
           <input
             type="range"
             name=""
             id=""
-            max={50}
-            min={-50}
+            max={100}
+            min={-100}
             step={5}
             value={optionsState.rootLeft}
             onChange={(e) => {
@@ -41,13 +42,13 @@ export const Sidebar = ({
           />
         </label>
         <label>
-          Root margin Right ↔ {optionsState.rootRight + "%"}
+          Root Margin Right ↔ {optionsState.rootRight + "%"}
           <input
             type="range"
             name=""
             id=""
-            max={50}
-            min={-50}
+            max={100}
+            min={-100}
             step={5}
             value={optionsState.rootRight}
             onChange={(e) => {
@@ -56,13 +57,13 @@ export const Sidebar = ({
           />
         </label>
         <label>
-          Root margin Top ↕ {optionsState.rootTop + "%"}
+          Root Margin Top ↕ {optionsState.rootTop + "%"}
           <input
             type="range"
             name=""
             id=""
-            max={50}
-            min={-50}
+            max={100}
+            min={-100}
             step={5}
             value={optionsState.rootTop}
             onChange={(e) => {
@@ -71,13 +72,13 @@ export const Sidebar = ({
           />
         </label>
         <label>
-          Root margin Bottom ↕ {optionsState.rootBottom + "%"}
+          Root Margin Bottom ↕ {optionsState.rootBottom + "%"}
           <input
             type="range"
             name=""
             id=""
-            max={50}
-            min={-50}
+            max={100}
+            min={-100}
             step={5}
             value={optionsState.rootBottom}
             onChange={(e) => {
@@ -103,7 +104,7 @@ export const Sidebar = ({
         <pre>
           <code>{`options = {
 root: null | Element,
-rootMargin: "${optionsState.rootTop}% ${optionsState.rootRight}% ${optionsState.rootTop}% ${optionsState.rootLeft}%",
+rootMargin: "${optionsState.rootTop}% ${optionsState.rootRight}% ${optionsState.rootBottom}% ${optionsState.rootLeft}%",
 threshold: ${optionsState.threshold} 
 }`}</code>
         </pre>

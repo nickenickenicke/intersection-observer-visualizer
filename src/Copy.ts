@@ -25,9 +25,9 @@ export const copy: Copy = {
     },
     {
       swedish:
-        'Root margin justerar "fönstret" som händelsen sker i. Enhet är procent eller CSS-värden. Ordningen är top right bottom left.',
+        'Root margin justerar "fönstret" som händelsen sker i. Enhet är procent eller pixlar. Ordningen är top right bottom left.',
       english:
-        'Root margin adjusts the "window" where the event occurs. The unit is percent or CSS values. The order is top right bottom left.',
+        'Root margin adjusts the "window" where the event occurs. The unit is percent or pixels. The order is top right bottom left.',
     },
     {
       swedish:

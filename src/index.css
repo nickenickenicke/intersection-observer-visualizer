@@ -201,6 +201,7 @@ p code {
 .root-margin::after {
   content: "Root Margin";
   position: absolute;
+  width: max-content;
   color: blue;
   top: -1.5rem;
   left: 0;

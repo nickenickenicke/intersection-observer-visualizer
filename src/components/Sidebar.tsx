@@ -109,9 +109,9 @@ threshold: ${optionsState.threshold}
 }`}</code>
         </pre>
         {copy.paragraphs.map((paragraph, index) => (
-          <p key={index}>
-            <Markdown>{paragraph[language as keyof Language]}</Markdown>
-          </p>
+          <Markdown key={index}>
+            {paragraph[language as keyof Language]}
+          </Markdown>
         ))}
       </aside>
     </>

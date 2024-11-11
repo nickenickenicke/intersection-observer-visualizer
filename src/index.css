@@ -13,6 +13,7 @@
   --color-code: #9333ea;
   --margin-s: 0.5rem;
   --margin-m: 1rem;
+  --scroll-shadow-top: 0px;
 }
 
 * {
@@ -54,6 +55,7 @@ html {
   justify-content: center;
   container: layout-grid-main / inline-size;
   position: relative;
+  overflow: hidden;
 }
 
 input {
@@ -105,6 +107,8 @@ p code {
   border: 1px solid black;
   width: var(--wrapper-block);
   height: var(--wrapper-inline);
+  background: white;
+  z-index: 2;
 }
 
 .wrapper-element::after {
@@ -153,6 +157,24 @@ p code {
 
 .scrolling-element-observed {
   background: var(--color-observed);
+}
+
+.scrolling-element-shadow {
+  padding: 0.5rem;
+  position: absolute;
+  top: var(--scroll-shadow-top);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  background: repeating-linear-gradient(
+    45deg,
+    #d0d0d0,
+    #d0d0d0 10px,
+    #eeeeee 10px,
+    #eeeeee 20px
+  );
+  z-index: 1;
 }
 
 .root-margin {

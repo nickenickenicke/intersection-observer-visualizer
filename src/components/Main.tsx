@@ -16,6 +16,13 @@ export const Main = ({ optionsState, language }: MainProps) => {
   const boundingContainer = useRef<HTMLDivElement | null>(null);
   const toBeObserved = useRef<HTMLDivElement | null>(null);
   const [observed, setObserved] = useState(false);
+  const [scrollLength, setScrollLength] = useState(9999);
+
+  const handleScroll = () => {
+    const offsetStart =
+      toBeObserved.current!.offsetTop + boundingContainer.current!.offsetTop;
+    setScrollLength(offsetStart - boundingContainer.current!.scrollTop);
+  };
 
   useEffect(() => {
     const options: IntersectionObserverInit = {
@@ -33,6 +40,7 @@ export const Main = ({ optionsState, language }: MainProps) => {
     if (toBeObserved.current) {
       observer.observe(toBeObserved.current);
     }
+    if (scrollLength === 9999) handleScroll();
     return () => {
       observer.disconnect();
     };
@@ -67,8 +75,21 @@ export const Main = ({ optionsState, language }: MainProps) => {
                 optionsState.rootRight
               ),
             } as CSSProperties
-          }></div>
-        <div ref={boundingContainer} className="wrapper-element">
+          }
+        ></div>
+        <div
+          className="scrolling-element-shadow"
+          style={
+            {
+              "--scroll-shadow-top": scrollLength + "px",
+            } as CSSProperties
+          }
+        ></div>
+        <div
+          ref={boundingContainer}
+          className="wrapper-element"
+          onScroll={handleScroll}
+        >
           <div className="wrapper-titles">
             <span className="root-title">Root</span>
             <span
@@ -76,7 +97,8 @@ export const Main = ({ optionsState, language }: MainProps) => {
                 observed
                   ? "title-element-status title-element-status-observed"
                   : "title-element-status"
-              }>
+              }
+            >
               {observed
                 ? copy.observed[language as keyof Language]
                 : copy.notObserved[language as keyof Language]}
@@ -91,7 +113,8 @@ export const Main = ({ optionsState, language }: MainProps) => {
               observed
                 ? "scrolling-element scrolling-element-observed"
                 : "scrolling-element"
-            }>
+            }
+          >
             {observed
               ? copy.observed[language as keyof Language]
               : copy.notObserved[language as keyof Language]}

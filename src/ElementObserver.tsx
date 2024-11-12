@@ -11,7 +11,7 @@ export interface InterOptions {
 }
 
 export const ElementObserver = () => {
-  const [language, setLanguage] = useState("swedish");
+  const [language, setLanguage] = useState("english");
   const [optionsState, setOptionsState] = useState<InterOptions>({
     rootLeft: -10,
     rootRight: -10,
